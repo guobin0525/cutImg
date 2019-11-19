@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>截图页面</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <script src="/public/js/jquery.min.js"></script>
+    <script src="/public/js/jquery.Jcrop.js"></script>
+    <script src="/public/js/jquery-cut.js"></script>
+    <script src="/public/js/mycut.js"></script>
+    <link rel="stylesheet" href="/public/css/main.css" type="text/css" />
+    <link rel="stylesheet" href="/public/css/demos.css" type="text/css" />
+    <link rel="stylesheet" href="/public/css/jquery.Jcrop.css" type="text/css" />
+    <link rel="stylesheet" href="/public/css/jquery-cut.css" type="text/css" />
+    <link rel="stylesheet" href="/public/css/mycut.css" type="text/css" />
+    <style rel="stylesheet" type="text/css">
+        #preview-pane .preview-container{
+            width: 200px;
+            height: 200px;
+        }
+        .jcrop-holder #preview-pane{
+            top: 30%;
+            right: -300px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="jc-demo-box">
+                <img src="/uploads/<%= imgsrc%>" data-imgsrc="<%= imgsrc%>" id="target" alt="cuttu" />
+                <div id="preview-pane">
+                    <div class="preview-container">
+                        <img src="/uploads/<%= imgsrc%>" class="jcrop-preview" alt="Preview" />
+                    </div>
+                </div>
+                <div class="description">
+                    <button id="btn">提交截图</button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    //必须先声明
+    var curobj;
+    $("#btn").click(function () {
+        curobj.imgsrc=$("#target").data("imgsrc");
+        $.ajax({
+            url:"/cutimg",
+            type:"get",
+            data:curobj,
+            dataType: "json",
+            success:function (val) {
+                if(val.bok){
+                    alert(val.msg);
+                    window.location.href="/tofile";//裁切成功后，跳转回上传文件页面
+                }else{
+                    console.log(val.msg);
+                }
+            },
+            error:function (err) {
+                console.log(err);
+            }
+        })
+    });
+</script>
+</html>
+

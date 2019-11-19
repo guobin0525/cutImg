@@ -1,0 +1,19 @@
+{
+  "name": "myJrop",
+  "version": "1.0.0",
+  "description": "this is a cutimg project",
+  "main": "cutapp.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "guomushan",
+  "license": "ISC",
+  "devDependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "formidable": "^1.2.1",
+    "gm": "^1.23.1",
+    "silly-datetime": "^0.1.2"
+  }
+}
