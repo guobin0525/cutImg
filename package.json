@@ -11,7 +11,7 @@
   "license": "ISC",
   "devDependencies": {
     "ejs": "^2.6.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "formidable": "^1.2.1",
     "gm": "^1.23.1",
     "silly-datetime": "^0.1.2"
